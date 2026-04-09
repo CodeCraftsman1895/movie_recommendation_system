@@ -46,6 +46,13 @@ movie_recommendation_system/
 ├── LICENSE
 ├── .gitignore
 │
+├── script/
+│   ├── config.py
+│   ├── data_loading.py
+│   ├── preprocessing.py
+│   ├── model_training.py
+│   └── generate_pipeline.py
+│
 ├── notebooks/
 │   └── MRS(content based).ipynb
 │
@@ -85,26 +92,14 @@ python app.py
 
 ## 🌐 Deployment
 
-### 🔹 Option 1: Render
-1. Create a new Web Service on Render  
-2. Connect your GitHub repository  
-3. Build command:  
-   pip install -r requirements.txt  
-4. Start command:  
-   python app.py  
+### 🔹 Recommended: Hugging Face Spaces
+Due to the large memory footprint of the pre-computed 7GB `similarity.pkl` matrix, standard free-tier hosting solutions (like Render, Vercel, or Streamlit Cloud) will instantly encounter Out-Of-Memory (OOM) errors.
 
----
-
-### 🔹 Option 2: Railway
-- Connect GitHub repo  
-- Add environment variables (if needed)  
-- Deploy directly  
-
----
-
-### 🔹 Option 3: Vercel (for API-based backend)
-- Use serverless functions  
-- Connect repo and deploy  
+**Hugging Face Spaces** is the ideal solution because it offers generous free-tier **16GB RAM** Streamlit-native environments and natively handles massive file uploads through Git LFS:
+1. Create a [Hugging Face Space](https://huggingface.co/spaces) and select **Streamlit** as your Space SDK. 
+2. Ensure you are using the default **Free / CPU basic** (16 GB RAM) hardware.
+3. Upload all project files, including the massive 7GB `.pkl` file via Git LFS or the Web UI.
+4. Hugging Face will automatically detect `app.py`, execute your requirements, and initialize the application globally.
 
 ---
 
