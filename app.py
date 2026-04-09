@@ -2,6 +2,15 @@ import streamlit as st
 import pickle 
 import pandas as pd
 
+# Automatically generate required output files (like data.pkl and similarity.pkl) 
+# if they are not already present in the workspace.
+try:
+    from script.generate_pipeline import generate_models_if_missing
+    generate_models_if_missing()
+except Exception as e:
+    st.error(f"Failed to generate models automatically: {e}")
+
+
 data = pickle.load(open('data.pkl', mode = 'rb'))
 data = pd.DataFrame(data)
 
