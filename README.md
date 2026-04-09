@@ -12,7 +12,7 @@ This project suggests top 5 movies similar to a given title by analyzing metadat
 ---
 
 ## 📸 Screenshots
-![User Interface](./assests/Screenshort.png)  
+![App Screenshot](assets/Screenshot.png)  
 
 ---
 
